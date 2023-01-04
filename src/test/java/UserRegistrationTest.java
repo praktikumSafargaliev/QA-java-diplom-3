@@ -12,9 +12,9 @@ public class UserRegistrationTest {
 
     private WebDriver driver;
     private RegisterPage objRegisterPage;
-    private String name;
-    private String email;
-    private String password;
+    private final String name = System.currentTimeMillis() + "autotest";
+    private final String email = System.currentTimeMillis() + "@ya.ru";
+    private final String password = System.currentTimeMillis() + "password";
     private final String expectedErrorTextInvalidPassword = "Некорректный пароль";
 
     @Before
@@ -22,30 +22,19 @@ public class UserRegistrationTest {
         driver = new ChromeDriver();
         objRegisterPage = new RegisterPage(driver);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        name = System.currentTimeMillis() + "autotest";
-        email = System.currentTimeMillis() + "@ya.ru";
-        password = System.currentTimeMillis() + "password";
     }
 
     @Test
     @DisplayName("Регистрация пользователя")
     public void createNewUserTest() {
-        objRegisterPage.openUrl();
-        objRegisterPage.inputName(name);
-        objRegisterPage.inputEmail(email);
-        objRegisterPage.inputPassword(password);
-        objRegisterPage.clickRegistrationButton();
+        objRegisterPage.registrationUser(name, email, password);
         objRegisterPage.checkSuccessRegistration();
     }
 
     @Test
     @DisplayName("Проверяем ошибку 'Некорректный пароль' для невалидного пароля (< 6 символов)")
     public void checkErrorTextInvalidPasswordTest() {
-        objRegisterPage.openUrl();
-        objRegisterPage.inputName(name);
-        objRegisterPage.inputEmail(email);
-        objRegisterPage.inputPassword("passw");
-        objRegisterPage.clickRegistrationButton();
+        objRegisterPage.registrationUser(name, email, "passw");
         Assert.assertEquals(expectedErrorTextInvalidPassword, objRegisterPage.getErrorTextInvalidPassword());
     }
 

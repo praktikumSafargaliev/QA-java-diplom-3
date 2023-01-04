@@ -15,7 +15,6 @@ public class RegisterPage {
     private final By enterButton = By.xpath(".//button[text()='Войти']");
     private final By invalidPasswordErrorText = By.xpath(".//p[text()='Некорректный пароль']");
     private final By enterLink = By.xpath(".//a[text()='Войти']");
-    private final By profileDataContainer = By.xpath(".//div[@Class='Profile_profile__3dzvr']");
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
@@ -54,6 +53,20 @@ public class RegisterPage {
     @Step("Получаем для сравнения текст ошибки при некорректном пароле")
     public String getErrorTextInvalidPassword() {
         return driver.findElement(invalidPasswordErrorText).getText();
+    }
+
+    @Step("Кликаем по кнопке 'Войти'")
+    public void clickEnterButton() {
+        driver.findElement(enterLink).click();
+    }
+
+    @Step("Регистрируем нового пользователя")
+    public void registrationUser(String name, String email, String password) {
+        openUrl();
+        inputName(name);
+        inputEmail(email);
+        inputPassword(password);
+        clickRegistrationButton();
     }
 
 }
