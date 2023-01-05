@@ -3,11 +3,11 @@ package pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import static constants.Constant.URL_RECOVERY_PASSWORD_PAGE;
 
 public class RecoveryPasswordPage {
 
     private final WebDriver driver;
-    private final String urlRecoveryPasswordPage = "https://stellarburgers.nomoreparties.site/forgot-password";
     private final By enterLink = By.xpath(".//a[text()='Войти']");
 
     public RecoveryPasswordPage(WebDriver driver) {
@@ -16,7 +16,7 @@ public class RecoveryPasswordPage {
 
     @Step("Открываем страницу")
     public void openUrl() {
-        driver.get(urlRecoveryPasswordPage);
+        driver.get(URL_RECOVERY_PASSWORD_PAGE);
     }
 
     @Step("Кликаем по кнопке 'Войти'")

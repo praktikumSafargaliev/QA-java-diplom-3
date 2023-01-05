@@ -3,11 +3,11 @@ package pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import static constants.Constant.URL_MAIN_PAGE;
 
 public class MainPage {
 
     private final WebDriver driver;
-    private final String urlMainPage = "https://stellarburgers.nomoreparties.site";
     private final By enterButton = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By personalAreaHeaderButton = By.xpath(".//a[@href='/account']");
     private final By bunConstructorButton = By.xpath(".//div[./span[text()='Булки']]");
@@ -21,7 +21,7 @@ public class MainPage {
 
     @Step("Открываем страницу")
     public void openUrl() {
-        driver.get(urlMainPage);
+        driver.get(URL_MAIN_PAGE);
     }
 
     @Step("Кликаем кнопку 'Войти в аккаунт'")

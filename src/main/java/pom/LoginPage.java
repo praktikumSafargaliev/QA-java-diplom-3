@@ -3,11 +3,11 @@ package pom;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import static constants.Constant.URL_LOGIN_PAGE;
 
 public class LoginPage {
 
     private final WebDriver driver;
-    private final String urlLoginPage = "https://stellarburgers.nomoreparties.site/login";
     private final By enterButton = By.xpath(".//button[text()='Войти']");
     private final By emailInputField = By.xpath(".//div[label[text()='Email']]/input");
     private final By passwordInputField = By.xpath(".//div[label[text()='Пароль']]/input");
@@ -19,7 +19,7 @@ public class LoginPage {
 
     @Step("Открываем страницу")
     public void openUrl() {
-        driver.get(urlLoginPage);
+        driver.get(URL_LOGIN_PAGE);
     }
 
     @Step("Вводим имя")

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 public class ProfilePage {
 
     private final WebDriver driver;
-    private final String urlProfilePage = "https://stellarburgers.nomoreparties.site/account/profile";
     private final By nameInputField = By.xpath(".//div[label[text()='Имя']]/input");
     private final By exitButton = By.xpath(".//button[text()='Выход']");
     private final By constructorHeaderButton = By.xpath(".//a[p[text()='Конструктор']]");
