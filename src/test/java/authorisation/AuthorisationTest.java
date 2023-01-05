@@ -1,4 +1,4 @@
-package Authorisation;
+package authorisation;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
