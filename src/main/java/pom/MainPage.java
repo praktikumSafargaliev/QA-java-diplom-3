@@ -10,13 +10,10 @@ public class MainPage {
     private final String urlMainPage = "https://stellarburgers.nomoreparties.site";
     private final By enterButton = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By personalAreaHeaderButton = By.xpath(".//a[@href='/account']");
-    private final By bunConstructorButton = By.xpath(".//span[text()='Булки']");
-    private final By sauceConstructorButton = By.xpath(".//span[text()='Соусы']");
-    private final By fillingConstructorButton = By.xpath(".//span[text()='Начинки']");
+    private final By bunConstructorButton = By.xpath(".//div[./span[text()='Булки']]");
+    private final By sauceConstructorButton = By.xpath(".//div[./span[text()='Соусы']]");
+    private final By fillingConstructorButton = By.xpath(".//div[./span[text()='Начинки']]");
     private final By burgerIngredientsSection = By.xpath(".//section[@Class='BurgerIngredients_ingredients__1N8v2']");
-    private final By bunTabHeading = By.xpath(".//h2[text()='Булки']");
-    private final By sauceTabHeading = By.xpath(".//h2[text()='Соусы']");
-    private final By fillingTabHeading = By.xpath(".//h2[text()='Начинки']");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -57,19 +54,19 @@ public class MainPage {
         driver.findElement(fillingConstructorButton).click();
     }
 
-    @Step("Проверяем, что отображается заголовок 'Булки'")
-    public void checkDisplayBunHeading() {
-        driver.findElement(bunTabHeading).isDisplayed();
+    @Step("Получаем имя класса у вкладки 'Булки'")
+    public String getClassNameBunTab() {
+        return driver.findElement(bunConstructorButton).getAttribute("class");
     }
 
-    @Step("Проверяем, что отображается заголовок 'Соусы'")
-    public void checkDisplaySauceHeading() {
-        driver.findElement(sauceTabHeading).isDisplayed();
+    @Step("Получаем имя класса у вкладки 'Соусы'")
+    public String getClassNameSauceTab() {
+        return driver.findElement(sauceConstructorButton).getAttribute("class");
     }
 
-    @Step("Проверяем, что отображается заголовок 'Начинки'")
-    public void checkDisplayFillingHeading() {
-        driver.findElement(fillingTabHeading).isDisplayed();
+    @Step("Получаем имя класса у вкладки 'Начинки'")
+    public String getClassNameFillingTab() {
+        return driver.findElement(fillingConstructorButton).getAttribute("class");
     }
 
 }

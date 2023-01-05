@@ -1,5 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pom.MainPage;
 
 import java.util.concurrent.TimeUnit;
+
+import static org.hamcrest.CoreMatchers.containsString;
 
 public class ConstructorTest {
 
@@ -21,28 +24,28 @@ public class ConstructorTest {
     }
 
     @Test
-    @DisplayName("Проверяем переход к разделу 'Булки'")
+    @DisplayName("Проверяем, что вкладка 'Булки' активна после нажатия")
     public void moveToBunTabTest() {
         objMainPage.openUrl();
         objMainPage.clickSauceTab();
         objMainPage.clickBunTab();
-        objMainPage.checkDisplayBunHeading();
+        Assert.assertThat(objMainPage.getClassNameBunTab(), containsString("current"));
     }
 
     @Test
-    @DisplayName("Проверяем переход к разделу 'Соусы'")
+    @DisplayName("Проверяем, что вкладка 'Соусы' активна после нажатия")
     public void moveToSauceTabTest() {
         objMainPage.openUrl();
         objMainPage.clickSauceTab();
-        objMainPage.checkDisplaySauceHeading();
+        Assert.assertThat(objMainPage.getClassNameSauceTab(), containsString("current"));
     }
 
     @Test
-    @DisplayName("Проверяем переход к разделу 'Начинки'")
+    @DisplayName("Проверяем, что вкладка 'Начинки' активна после нажатия")
     public void moveToFillingTabTest() {
         objMainPage.openUrl();
         objMainPage.clickFillingTab();
-        objMainPage.checkDisplayFillingHeading();
+        Assert.assertThat(objMainPage.getClassNameFillingTab(), containsString("current"));
     }
 
     @After
